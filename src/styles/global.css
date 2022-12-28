@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'FactorA';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @apply transition-all
+}
+pre {
+  font-family: 'FactorA';
+}
+html {
+  width: 100vw;
+  height: 100vh;
+}
+h1, h2, h3, h4, h5, h6 {
+  @apply text-neutral-200
+}
+p, span {
+  @apply text-neutral-400
+}
+a {
+  @apply text-blue-600
+}
+a:hover {
+  @apply text-blue-500
+}

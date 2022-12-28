@@ -1,0 +1,31 @@
+
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 300;
+	src: url(FactorA-Light.otf); 
+}
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 400;
+	src: url(FactorA-Regular.otf); 
+}
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 500;
+	src: url(FactorA-Medium.otf); 
+}
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 700;
+	src: url(FactorA-Bold.otf); 
+}
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 800;
+	src: url(FactorA-ExtraBold.otf); 
+}
+@font-face {
+	font-family: 'FactorA'; 
+    font-weight: 900;
+	src: url(FactorA-Black.otf); 
+}

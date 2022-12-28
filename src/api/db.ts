@@ -1,0 +1,2 @@
+export const url = 'https://oowhzpkbhhaylfwtamwm.supabase.co'
+export const api_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vd2h6cGtiaGhheWxmd3RhbXdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njg2OTUwOTYsImV4cCI6MTk4NDI3MTA5Nn0.b3Gp2kOsVM_f-TeeViIu3rKtO1dhO0HqKYuT9OHVQsU'
