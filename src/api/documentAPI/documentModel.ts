@@ -38,6 +38,14 @@ export const documentModel = (() => {
             .limit(1)
             .single()
             return data as Doc
-        }
+        },
+        getDocsByOwnerUid: async(owner_uid: string) => {
+            const { data, error } = await supabase
+            .from('documents')
+            .select()
+            .eq('owner_uid', owner_uid)
+            if (data) return data as Doc[]
+            return null
+        },
     }
 })()

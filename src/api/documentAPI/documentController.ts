@@ -8,6 +8,10 @@ export const documentController = (() => {
         getDocByDocID: async(docID: string) => {
             const res = await documentModel.getDocByDocID(docID)
             return res
+        },
+        getDocsByOwnerUid: async(owner_uid: string) => {
+            const res = await documentModel.getDocsByOwnerUid(owner_uid)
+            return res
         }
     }
 })()
