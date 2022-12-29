@@ -6,6 +6,7 @@ import RecoilNexus from "recoil-nexus";
 import RootPage from './pages/root.page';
 import FilesPage from './pages/files.page';
 import FilePage from './pages/file.page';
+import EditorPage from './pages/editor.page';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: 'file/:path',
         element: <FilePage/>,
+      },
+      {
+        path: 'file/:path/editor',
+        element: <EditorPage/>,
       },
     ],
   },

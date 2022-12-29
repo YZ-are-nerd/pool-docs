@@ -8,7 +8,7 @@ type Props = {
 }
 const SideBarButton: React.FC<Props> = ({title, icon, count, link}) => {
         return (
-            <Link to={link} className="w-full h-fit py-1 px-2 rounded-xl flex items-center justify-between gap-2 cursor-pointer bg-neutral-800 hover:bg-opacity-80">
+            <Link to={link} className="w-full h-fit py-1 px-2 rounded-xl flex items-center justify-between gap-2 cursor-pointer bg-neutral-200 hover:bg-opacity-80">
                 <div className="w-fit h-full flex items-center gap-2">
                     <>{icon}</>
                     <p className="text-sm mt-0.5 text-neutral-400">{title}</p>

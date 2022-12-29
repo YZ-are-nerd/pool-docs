@@ -1,11 +1,20 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@editorjs/attaches': ^1.3.0
+  '@editorjs/editorjs': ^2.26.4
+  '@editorjs/header': ^2.7.0
+  '@editorjs/link': ^2.5.0
+  '@editorjs/marker': ^1.3.0
+  '@editorjs/nested-list': ^1.2.0
+  '@editorjs/paragraph': ^2.9.0
   '@headlessui/react': ^1.7.5
+  '@sotaproject/strikethrough': ^1.0.1
   '@supabase/storage-js': ^2.1.0
   '@supabase/supabase-js': ^2.1.0
   '@tailwindcss/container-queries': ^0.1.0
   '@tailwindcss/line-clamp': ^0.4.2
+  '@types/editorjs__header': ^2.6.0
   '@types/lodash': ^4.14.191
   '@types/luxon': ^3.1.0
   '@types/react': ^18.0.26
@@ -13,6 +22,8 @@ specifiers:
   '@types/react-helmet': ^6.1.6
   '@vitejs/plugin-react-swc': ^3.0.0
   autoprefixer: ^10.4.13
+  editorjs-header-with-alignment: ^1.0.1
+  editorjs-paragraph-with-alignment: 3.x
   framer-motion: ^7.6.19
   lodash: ^4.17.21
   luxon: ^3.1.0
@@ -31,11 +42,22 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  '@editorjs/attaches': 1.3.0
+  '@editorjs/editorjs': 2.26.4
+  '@editorjs/header': 2.7.0
+  '@editorjs/link': 2.5.0
+  '@editorjs/marker': 1.3.0
+  '@editorjs/nested-list': 1.2.0
+  '@editorjs/paragraph': 2.9.0
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
+  '@sotaproject/strikethrough': 1.0.1
   '@supabase/supabase-js': 2.2.2
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.4
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.4
+  '@types/editorjs__header': 2.6.0
   autoprefixer: 10.4.13_postcss@8.4.20
+  editorjs-header-with-alignment: 1.0.1
+  editorjs-paragraph-with-alignment: 3.0.0
   framer-motion: 7.10.3_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.20
   react: 18.2.0
@@ -69,6 +91,73 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.11
+    dev: false
+
+  /@codexteam/icons/0.0.2:
+    resolution: {integrity: sha512-KdeKj3TwaTHqM3IXd5YjeJP39PBUZTb+dtHjGlf5+b0VgsxYD4qzsZkb11lzopZbAuDsHaZJmAYQ8LFligIT6Q==}
+    dev: false
+
+  /@codexteam/icons/0.0.4:
+    resolution: {integrity: sha512-V8N/TY2TGyas4wLrPIFq7bcow68b3gu8DfDt1+rrHPtXxcexadKauRJL6eQgfG7Z0LCrN4boLRawR4S9gjIh/Q==}
+    dev: false
+
+  /@codexteam/icons/0.0.5:
+    resolution: {integrity: sha512-s6H2KXhLz2rgbMZSkRm8dsMJvyUNZsEjxobBEg9ztdrb1B2H3pEzY6iTwI4XUPJWJ3c3qRKwV4TrO3J5jUdoQA==}
+    dev: false
+
+  /@codexteam/icons/0.0.8:
+    resolution: {integrity: sha512-toTLbLPbrDFl2ZK2mtDC+P7sdrJaqOK6URsjFy6m54Pry8q4ckKeKJ1fOEwVcSGKiwdRhrRO3ZzSbL16DaIBJA==}
+    dev: false
+
+  /@codexteam/icons/0.1.0:
+    resolution: {integrity: sha512-jW1fWnwtWzcP4FBGsaodbJY3s1ZaRU+IJy1pvJ7ygNQxkQinybJcwXoyt0a5mWwu/4w30A42EWhCrZn8lp4fdw==}
+    dev: false
+
+  /@editorjs/attaches/1.3.0:
+    resolution: {integrity: sha512-D+dj55EsC5bvXV///Dh/+KN4unuI0j6SU3f5QcMA5zrfda47PNKwbKOuwMBJwn0O+o5qwqrFv67g98lAo2qqVQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.4
+    dev: false
+
+  /@editorjs/editorjs/2.26.4:
+    resolution: {integrity: sha512-yuJ2NM1Y5+8DDNWr4C00tHMVHKy0uCqK1HS4pwFPVcXUawgJnU2Li2vKGvPLuf0Jj2ir7MVgADO6oC1TbYBOYQ==}
+    dependencies:
+      '@codexteam/icons': 0.1.0
+      codex-notifier: 1.1.2
+      codex-tooltip: 1.0.5
+      html-janitor: 2.0.4
+      nanoid: 3.3.4
+    dev: false
+
+  /@editorjs/header/2.7.0:
+    resolution: {integrity: sha512-4fGKGe2ZYblVqR/P/iw5ieG00uXInFgNMftBMqJRYcB2hUPD30kuu7Sn6eJDcLXoKUMOeqi8Z2AlUxYAmvw7zQ==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/link/2.5.0:
+    resolution: {integrity: sha512-3Oa1VweBY7Sscjzw8pv1QcWGyP+XdPl6+yu+gXnSETyjz9TQRZUjved0qw2OomYOjMZ3RumrdDJXxoALlZdvuQ==}
+    dependencies:
+      '@babel/runtime': 7.20.7
+      '@codexteam/icons': 0.0.4
+    dev: false
+
+  /@editorjs/marker/1.3.0:
+    resolution: {integrity: sha512-RYWYDnFPjNBJgR7KIGjB9gPnUwGvn2aIoRevAm422Wx1mg5eT4gcvwc0T5V76pYPSoD2Z0T2GPkzl9d1hl398w==}
+    dependencies:
+      '@codexteam/icons': 0.0.5
+    dev: false
+
+  /@editorjs/nested-list/1.2.0:
+    resolution: {integrity: sha512-e2EBqWiR2rg4WSH18psQt14wGvwCPrnZ1RhG+M99ru27ETqjMb+W79+1M8Bm3VXBRLkANTpxJGXwnJxluBp/GA==}
+    dependencies:
+      '@codexteam/icons': 0.0.2
+    dev: false
+
+  /@editorjs/paragraph/2.9.0:
+    resolution: {integrity: sha512-lI6x1eiqFx2X3KmMak6gBlimFqXhG35fQpXMxzrjIphNLr4uPsXhVbyMPimPoLUnS9rM6Q00vptXmP2QNDd0zg==}
+    dependencies:
+      '@codexteam/icons': 0.0.4
     dev: false
 
   /@emotion/is-prop-valid/0.8.8:
@@ -367,6 +456,12 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
+  /@sotaproject/strikethrough/1.0.1:
+    resolution: {integrity: sha512-tgfYXrg+lY6lCh2ZXyoPfe8rxpe+orRgiI2mOSyu1z/+gb9xIjOGhIXNgC6ehOmZUzqtoWzi9SrIEALCYfQpjA==}
+    dependencies:
+      '@codexteam/icons': 0.0.8
+    dev: false
+
   /@supabase/functions-js/2.0.0:
     resolution: {integrity: sha512-ozb7bds2yvf5k7NM2ZzUkxvsx4S4i2eRKFSJetdTADV91T65g4gCzEs9L3LUXSrghcGIkUaon03VPzOrFredqg==}
     dependencies:
@@ -543,6 +638,10 @@ packages:
       tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
     dependencies:
       tailwindcss: 3.2.4_postcss@8.4.20
+    dev: false
+
+  /@types/editorjs__header/2.6.0:
+    resolution: {integrity: sha512-J9TyO/BjNVddi+syyXpvMRMtVz5Z62pwmFKynWsgP+wnJYdWF8ABqgomokIsAvuEwH5NHa/YxsTltYcPPGCRRQ==}
     dev: false
 
   /@types/js-cookie/2.2.7:
@@ -725,6 +824,14 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
+  /codex-notifier/1.1.2:
+    resolution: {integrity: sha512-DCp6xe/LGueJ1N5sXEwcBc3r3PyVkEEDNWCVigfvywAkeXcZMk9K41a31tkEFBW0Ptlwji6/JlAb49E3Yrxbtg==}
+    dev: false
+
+  /codex-tooltip/1.0.5:
+    resolution: {integrity: sha512-IuA8LeyLU5p1B+HyhOsqR6oxyFQ11k3i9e9aXw40CrHFTRO2Y1npNBVU3W1SvhKAbUU7R/YikUBdcYFP0RcJag==}
+    dev: false
+
   /color-name/1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: false
@@ -808,6 +915,14 @@ packages:
 
   /dlv/1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
+    dev: false
+
+  /editorjs-header-with-alignment/1.0.1:
+    resolution: {integrity: sha512-L7cDSx/H3wgb9dg05HH9xPMotj3tkoElTd0TeY81pxvO0+tPV+yRZ9hV7fUyZolYUObKfYL9QS+yeTY/YCht5g==}
+    dev: false
+
+  /editorjs-paragraph-with-alignment/3.0.0:
+    resolution: {integrity: sha512-vSjjB/KUECEBxYqbj9yn1L799L14n0uoKrvk5qfaAokIHB8mYg5hZ8mOTtoS2cJu+xE3QZ/jmHY/Fh0EJeM8ZQ==}
     dev: false
 
   /electron-to-chromium/1.4.284:
@@ -1003,6 +1118,10 @@ packages:
 
   /hey-listen/1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+    dev: false
+
+  /html-janitor/2.0.4:
+    resolution: {integrity: sha512-92J5h9jNZRk30PMHapjHEJfkrBWKCOy0bq3oW2pBungky6lzYSoboBGPMvxl1XRKB2q+kniQmsLsPbdpY7RM2g==}
     dev: false
 
   /hyphenate-style-name/1.0.4:

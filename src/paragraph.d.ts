@@ -1,0 +1,6 @@
+declare module 'editorjs-paragraph-with-alignment'
+declare module '@editorjs/nested-list'
+declare module '@editorjs/link'
+declare module '@sotaproject/strikethrough'
+declare module 'editorjs-header-with-alignment'
+declare module '@editorjs/marker'

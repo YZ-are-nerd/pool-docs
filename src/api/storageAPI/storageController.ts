@@ -1,4 +1,4 @@
-import { storageModelAPI } from "./storageModelAPI"
+import { storageModelAPI } from "./storageModel"
 
 export const storageControllerAPI = (() => {
     return {
