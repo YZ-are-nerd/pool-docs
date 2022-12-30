@@ -1,21 +1,23 @@
-import { DateTime } from "luxon"
 import { useParams } from "react-router-dom"
-import { useRecoilValue } from "recoil"
-import Editor from "../components/pages/editor/Editor"
+import { useRecoilState, useRecoilValue } from "recoil"
+import ToolBar from "../components/pages/editor/molecules/ToolBar"
+import Editor from "../components/pages/editor/template/Editor"
 import { DocAtom } from "../store/Doc"
+import { SelectedWord } from "../store/SelectedWord"
 
 const EditorPage = () => {
     const params = useParams()
-    console.log(params);
     const doc = useRecoilValue(DocAtom(params.path!))
+    const [word, setWord] = useRecoilState(SelectedWord(''))
     return (
-    <div className='w-full h-full flex flex-col items-center justify-center'>
-        <div className="max-w-2xl w-full h-full flex flex-col gap-2">
+    <div className='w-full h-full relative flex flex-col items-center justify-center'>
+        <div className="max-w-3xl relative w-full h-full flex flex-col gap-2">
             <div className="w-full h-fit flex items-center justify-between">
                 <h1>{doc.title}</h1>
                 <button className="py-2 px-4 rounded-xl text-white bg-blue-600 hover:bg-blue-500">Сохранить</button>
             </div>
-            <Editor docID={params.path!} />
+            <Editor setWord={setWord} onlyRead={false} docID={params.path!} />
+            <ToolBar />
         </div>
     </div>
     )

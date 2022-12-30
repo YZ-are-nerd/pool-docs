@@ -28,7 +28,7 @@ const NavBar = () => {
   ]
   const [selectedPage, setSelectedPage] = useState<Nav>(navs[0])
   return (
-    <div className="w-full h-10 flex items-center justify-between">
+    <div className="max-w-7xl w-full mx-auto h-10 flex items-center justify-between">
       <div className="w-fit h-full flex items-center gap-2">
         {
           navs.map((nav, index) =>

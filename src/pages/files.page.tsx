@@ -1,6 +1,9 @@
+import { lazy, Suspense } from "react"
 import { Helmet } from "react-helmet"
-import CreateTemplates from "../components/pages/files/organisms/CreateTemplates"
-import FilesDesk from "../components/pages/files/organisms/FilesDesk"
+const CreateTemplates = lazy(() => import("../components/pages/files/organisms/CreateTemplates"))
+const FilesDesk = lazy(() => import("../components/pages/files/organisms/FilesDesk"))
+import CreateTemplateSkeleton from "../skeletons/CreateTemplate.skeleton"
+import FilesDeskSkeleton from "../skeletons/FilesDesk.skeleton"
 
 const FilesPage = () => {
   return (
@@ -9,8 +12,12 @@ const FilesPage = () => {
             <title>Файлы</title>
         </Helmet>
         <div className="w-full h-full flex flex-col gap-2">
-          <CreateTemplates />
-          <FilesDesk />
+          <Suspense fallback={<CreateTemplateSkeleton />}>
+            <CreateTemplates />
+          </Suspense>
+          <Suspense fallback={<FilesDeskSkeleton />}>
+            <FilesDesk />
+          </Suspense>
         </div>
     </section>
   )

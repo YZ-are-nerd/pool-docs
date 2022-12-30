@@ -5,8 +5,10 @@ import { RecoilRoot } from 'recoil'
 import RecoilNexus from "recoil-nexus";
 import RootPage from './pages/root.page';
 import FilesPage from './pages/files.page';
-import FilePage from './pages/file.page';
 import EditorPage from './pages/editor.page';
+import { lazy, Suspense } from 'react';
+const FilePage = lazy(() => import('./pages/file.page'))
+import FilePageSkeleton from './skeletons/FilePage.skeleton';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +20,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'file/:path',
-        element: <FilePage/>,
+        element: 
+        <Suspense fallback={<FilePageSkeleton/>}>
+          <FilePage/>
+        </Suspense>,
       },
       {
         path: 'file/:path/editor',

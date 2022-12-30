@@ -4,17 +4,11 @@
 
 * {
   font-family: 'FactorA';
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   @apply transition-all
 }
 pre {
   font-family: 'FactorA';
-}
-html {
-  width: 100vw;
-  height: 100vh;
 }
 div {
   @apply text-neutral-400
