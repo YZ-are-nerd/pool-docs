@@ -10,19 +10,14 @@ export const documentModel = (() => {
                 owner_uid: userID,
                 title: 'Новый документ',
                 updated_at: DateTime.now().toISO(),
-                data: {
-                    blocks: [
-                        {
-                            "type": "header",
-                            "data": {
-                              "text": "Привет, я Новый документ",
-                              "level": 1,
-                              "align": "left"
-                            }
+                data: [
+                    {
+                        type: 'p',
+                        content: {
+                          text: 'Hello'
                         }
-                    ]
-                }
-
+                    },
+                ]
             })
             .select()
             .limit(1)
