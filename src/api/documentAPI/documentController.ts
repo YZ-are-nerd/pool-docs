@@ -1,3 +1,4 @@
+import { Doc, Element } from '../types';
 import { documentModel } from './documentModel';
 export const documentController = (() => {
     return {
@@ -12,6 +13,13 @@ export const documentController = (() => {
         getDocsByOwnerUid: async(owner_uid: string) => {
             const res = await documentModel.getDocsByOwnerUid(owner_uid)
             return res
+        },
+        updateDoc: async(doc: Doc, editorData: Element[]) => {
+            const res = await documentModel.updateDoc(doc, editorData)
+            return res
+        },
+        updateDocData: async(doc: Doc, editorData: Element[], editedElement: Element, indexOfEditedElement: number) => {
+            await documentModel.updateDocData(doc, editorData, editedElement, indexOfEditedElement)
         }
     }
 })()

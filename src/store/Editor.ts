@@ -1,5 +1,5 @@
-import { Element } from './../components/pages/editor/atoms/elementsConstructor/H1Constructor';
 import { atomFamily, selectorFamily } from 'recoil';
+import { Element } from '../api/types';
 
 export const EditorAtom = atomFamily({
     key: 'editor',
@@ -7,7 +7,7 @@ export const EditorAtom = atomFamily({
         key: 'editorSelector',
         get: (id: string) => () => {
             const value: Element[] = []
-            return value
+            return value as Element[]
         }
-    })
+    }),
 })

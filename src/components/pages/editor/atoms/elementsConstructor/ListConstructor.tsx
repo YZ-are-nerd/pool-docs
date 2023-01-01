@@ -54,7 +54,7 @@ const ListConstructor = () => {
     },[])
   return (
     <div ref={wrapperRef} className='w-full h-fit flex flex-col'>
-        <div className="w-1/2 h-fit">
+        <div className="w-full h-fit">
             <Suspense fallback={<></>}>
             {
                 listType === 'ol'

@@ -2,18 +2,11 @@ import React, { useLayoutEffect, useRef, useState } from 'react'
 import { BiAlignLeft, BiAlignMiddle, BiAlignRight } from 'react-icons/bi';
 import { useClickAway } from 'react-use';
 import { useRecoilState } from 'recoil';
+import { Element } from '../../../../../api/types';
 import { Constructor } from '../../../../../store/Constructor';
 import { EditMode } from '../../../../../store/EditMode';
 import { EditorAtom } from '../../../../../store/Editor';
 import TextArea from '../TextArea';
-const MIN_TEXTAREA_HEIGHT = 0;
-export type Element = {
-  type: string,
-  content: {
-    text: string,
-    align?: string
-  }
-}
 const PConstructor = () => {
     const wrapperRef = useRef(null)
     const [value, setValue] = useState('')

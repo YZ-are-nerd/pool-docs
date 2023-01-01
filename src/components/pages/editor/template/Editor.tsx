@@ -10,8 +10,11 @@ import H2Element from '../atoms/renderElements/H2Element'
 import H3Element from '../atoms/renderElements/H3Element'
 import PElement from '../atoms/renderElements/PElement'
 import ListElement from '../atoms/renderElements/ListElement'
-import { Element } from '../../../../api/types'
-import { useEffect } from 'react'
+import { Doc, Element } from '../../../../api/types'
+import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useClickAway } from 'react-use'
+import { documentController } from '../../../../api/documentAPI/documentController'
+import { supabase } from '../../../../api/client'
 type Props = {
   docID: string,
   onlyRead: boolean,
@@ -19,7 +22,7 @@ type Props = {
 }
 
 const Editor: React.FC<Props> = ({docID, onlyRead, setWord}) => {
-    const doc = useRecoilValue(DocAtom(docID))
+    const [doc, setDoc] = useRecoilState(DocAtom(docID))
     const [editor, setEditor] = useRecoilState(EditorAtom('editor'))
     const [editMode, setEditMode] = useRecoilState(EditMode('editor'))
     const constructor = useRecoilValue(Constructor)
@@ -37,19 +40,47 @@ const Editor: React.FC<Props> = ({docID, onlyRead, setWord}) => {
       const text = selection?.toString()
       if (text) setWord && setWord(text)
     }
-    useEffect(() => {
+    const wrapperRef = useRef(null)
+    const setDocEditor = () => {
       setEditor(doc.data)
+    }
+    const updateDoc = async() => {
+      const updatedDoc = await documentController.updateDoc(doc, editor)
+      console.log(updatedDoc);
+      if (updatedDoc) {
+          setDoc(updatedDoc)
+          setEditor(updatedDoc.data)
+      }
+    }
+    useClickAway(wrapperRef, () => {
+      updateDoc()
+    })
+    useLayoutEffect(() => {
+      setDocEditor()
+    },[])
+    useEffect(() => {
+      supabase
+        .channel(`public:documents:id=eq.${doc.id}`)
+        .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'documents', filter: `id=eq.${doc.id}` }, payload => {
+            if (payload.new) {
+              console.log('Обновление');
+              const newDoc = payload.new as Doc 
+              setDoc(newDoc)
+              setEditor(newDoc.data)
+            }
+        })
+        .subscribe()
     },[])
   return (
 
-      <div className="max-w-3xl p-3 h-[1000px] w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
+      <div ref={wrapperRef} onClick={updateDoc} className="max-w-3xl p-3 h-[1000px] w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
         {
           editor.map((val, index) => {
-            if (val.type === 'h1') return <H1Element key={val.content.text + index} el={val} />
-            if (val.type === 'h2') return <H2Element key={val.content.text + index} el={val} />
-            if (val.type === 'h3') return <H3Element key={val.content.text + index} el={val} />
-            if (val.type === 'p') return <PElement key={val.content.text + index} el={val} />
-            if (val.type === 'ul' || val.type === 'ol') return <ListElement key={val.content.text + index} el={val} /> 
+            if (val.type === 'h1') return <H1Element docID={docID} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'h2') return <H2Element key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'h3') return <H3Element key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'p') return <PElement index={index} docID={docID} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'ul' || val.type === 'ol') return <ListElement key={val.content.text && val.content.text + index} el={val} /> 
           })
         }
         {
