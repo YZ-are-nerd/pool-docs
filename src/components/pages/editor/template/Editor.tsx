@@ -12,49 +12,24 @@ import PElement from '../atoms/renderElements/PElement'
 import ListElement from '../atoms/renderElements/ListElement'
 import { Doc, Element } from '../../../../api/types'
 import { useEffect, useLayoutEffect, useRef } from 'react'
-import { useClickAway } from 'react-use'
-import { documentController } from '../../../../api/documentAPI/documentController'
 import { supabase } from '../../../../api/client'
 type Props = {
   docID: string,
   onlyRead: boolean,
-  setWord?: SetterOrUpdater<string>
 }
 
-const Editor: React.FC<Props> = ({docID, onlyRead, setWord}) => {
+const Editor: React.FC<Props> = ({docID, onlyRead}) => {
     const [doc, setDoc] = useRecoilState(DocAtom(docID))
     const [editor, setEditor] = useRecoilState(EditorAtom('editor'))
     const [editMode, setEditMode] = useRecoilState(EditMode('editor'))
     const constructor = useRecoilValue(Constructor)
-    const initialValue: Element[] = [
-      {
-        type: 'p',
-        content: {
-          text: 'Hello'
-        }
-      },
-    ]
-    function gText(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-      e.preventDefault();
-      const selection = document.getSelection()
-      const text = selection?.toString()
-      if (text) setWord && setWord(text)
-    }
     const wrapperRef = useRef(null)
     const setDocEditor = () => {
       setEditor(doc.data)
     }
-    const updateDoc = async() => {
-      const updatedDoc = await documentController.updateDoc(doc, editor)
-      console.log(updatedDoc);
-      if (updatedDoc) {
-          setDoc(updatedDoc)
-          setEditor(updatedDoc.data)
-      }
-    }
-    useClickAway(wrapperRef, () => {
-      updateDoc()
-    })
+    // useClickAway(wrapperRef, () => {
+    //   updateDoc()
+    // })
     useLayoutEffect(() => {
       setDocEditor()
     },[])
@@ -63,7 +38,7 @@ const Editor: React.FC<Props> = ({docID, onlyRead, setWord}) => {
         .channel(`public:documents:id=eq.${doc.id}`)
         .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'documents', filter: `id=eq.${doc.id}` }, payload => {
             if (payload.new) {
-              console.log('Обновление');
+              console.log('Обновление', payload);
               const newDoc = payload.new as Doc 
               setDoc(newDoc)
               setEditor(newDoc.data)
@@ -73,13 +48,13 @@ const Editor: React.FC<Props> = ({docID, onlyRead, setWord}) => {
     },[])
   return (
 
-      <div ref={wrapperRef} onClick={updateDoc} className="max-w-3xl p-3 h-[1000px] w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
+      <div ref={wrapperRef} className="max-w-3xl p-3 h-[1000px] w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
         {
           editor.map((val, index) => {
-            if (val.type === 'h1') return <H1Element docID={docID} key={val.content.text && val.content.text + index} el={val} />
-            if (val.type === 'h2') return <H2Element key={val.content.text && val.content.text + index} el={val} />
-            if (val.type === 'h3') return <H3Element key={val.content.text && val.content.text + index} el={val} />
-            if (val.type === 'p') return <PElement index={index} docID={docID} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'h1') return <H1Element onlyRead={onlyRead} docID={docID} index={index} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'h2') return <H2Element onlyRead={onlyRead} docID={docID} index={index} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'h3') return <H3Element onlyRead={onlyRead} docID={docID} index={index} key={val.content.text && val.content.text + index} el={val} />
+            if (val.type === 'p') return <PElement onlyRead={onlyRead} index={index} docID={docID} key={val.content.text && val.content.text + index} el={val} />
             if (val.type === 'ul' || val.type === 'ol') return <ListElement key={val.content.text && val.content.text + index} el={val} /> 
           })
         }

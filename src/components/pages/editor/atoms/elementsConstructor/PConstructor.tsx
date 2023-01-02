@@ -1,19 +1,27 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { BiAlignLeft, BiAlignMiddle, BiAlignRight } from 'react-icons/bi';
+import { useParams } from 'react-router-dom';
 import { useClickAway } from 'react-use';
 import { useRecoilState } from 'recoil';
+import { documentController } from '../../../../../api/documentAPI/documentController';
 import { Element } from '../../../../../api/types';
 import { Constructor } from '../../../../../store/Constructor';
+import { DocAtom } from '../../../../../store/Doc';
 import { EditMode } from '../../../../../store/EditMode';
 import { EditorAtom } from '../../../../../store/Editor';
 import TextArea from '../TextArea';
 const PConstructor = () => {
-    const wrapperRef = useRef(null)
-    const [value, setValue] = useState('')
-    const [align, setAlign] = useState<'left' | 'center' | 'right'>('left')
-    const [editMode, setEditMode] = useRecoilState(EditMode('editor'))
-    const [constructor, setConstructor] = useRecoilState(Constructor)
-    const [editor, setEditor] = useRecoilState(EditorAtom('editor'))
+  const params = useParams()
+  const wrapperRef = useRef(null)
+  const [value, setValue] = useState('')
+  const [align, setAlign] = useState<'left' | 'center' | 'right'>('left')
+  const [editMode, setEditMode] = useRecoilState(EditMode('editor'))
+  const [constructor, setConstructor] = useRecoilState(Constructor)
+  const [doc, setDoc] = useRecoilState(DocAtom(params.path!))
+  const [editor, setEditor] = useRecoilState(EditorAtom('editor'))
+  const updateDoc = async(blocks: Element[]) => {
+      await documentController.updateDoc(doc, blocks)
+  }
     useClickAway(wrapperRef, () => {
       if (value.length > 0) {
         console.log('Можно создавать блок');
@@ -24,7 +32,8 @@ const PConstructor = () => {
             align: align
           }
         }
-        setEditor([...editor, h1Block])
+        const editorWithNewBlock = [...editor, h1Block]
+        updateDoc(editorWithNewBlock)
         setConstructor(null)
         setEditMode(false)
         setValue('')

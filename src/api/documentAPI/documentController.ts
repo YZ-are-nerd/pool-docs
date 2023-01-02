@@ -20,6 +20,9 @@ export const documentController = (() => {
         },
         updateDocData: async(doc: Doc, editorData: Element[], editedElement: Element, indexOfEditedElement: number) => {
             await documentModel.updateDocData(doc, editorData, editedElement, indexOfEditedElement)
+        },
+        updateDocTitle: async(doc: Doc, title: string) => {
+            await documentModel.updateDocTitle(doc, title)
         }
     }
 })()

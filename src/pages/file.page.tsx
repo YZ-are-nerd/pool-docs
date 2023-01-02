@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router-dom"
 import { useRecoilValue } from "recoil";
 import Editor from "../components/pages/editor/template/Editor";
@@ -11,6 +12,9 @@ const FilePage = () => {
     const navigate = useNavigate()
     return (
         <section className="w-full h-full flex flex-col gap-2">
+            <Helmet>
+                <title>{doc.title}</title>
+            </Helmet>
             <div className="max-w-3xl gap-2 flex flex-col p-3 h-full w-full mx-auto">
                 <div className="w-full h-fit flex items-center justify-between">
                     <div className="w-fit h-fil flex flex-col gap-1">

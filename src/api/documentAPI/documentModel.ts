@@ -44,10 +44,7 @@ export const documentModel = (() => {
                 updated_at: DateTime.now().toISO()
             } as Doc)
             .eq('id', doc.id)
-            .select()
             console.log(error);
-            if (data) return data[0] as Doc
-            return null
         },
         updateDocData: async(doc: Doc, editorData: Element[], editedElement: Element, indexOfEditedElement: number) => {
             const editedData = editorData.map((data, index) => {
@@ -58,7 +55,18 @@ export const documentModel = (() => {
             .from('documents')
             .update({
                 data: editedData,
+                updated_at: DateTime.now().toISO()
             } as Doc)
+            .eq('id', doc.id)
+            console.log(error);
+        },
+        updateDocTitle: async(doc: Doc, title: string) => {
+            const { error } = await supabase
+            .from('documents')
+            .update({
+                title: title,
+                updated_at: DateTime.now().toISO()
+            })
             .eq('id', doc.id)
             console.log(error);
         }

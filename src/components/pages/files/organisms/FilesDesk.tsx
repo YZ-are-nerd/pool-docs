@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { lazy, Suspense } from "react"
 import { useRecoilValue } from "recoil"
+import DocumentSkeleton from "../../../../skeletons/Document.skeleton"
 import { DocsAtom } from "../../../../store/DocsList"
-import DocumentHolder from "../../../global/DocumentHolder"
+const DocumentLink = lazy(() => import("../atoms/DocumentLink"))
 
 const FilesDesk = () => {
   const docs = useRecoilValue(DocsAtom)
@@ -11,11 +12,9 @@ const FilesDesk = () => {
       <div className="w-full h-full gap-2 grid grid-cols-2 lg:grid-cols-6 grid-rows-4">
         {
           docs && docs.map((doc) =>
-          <Link to={`/file/${doc.id}`} key={doc.id} 
-          className="w-full h-full flex flex-col items-center justify-center gap-2 p-2 rounded-xl bg-neutral-200 bg-opacity-50 hover:bg-neutral-200">
-            <DocumentHolder />
-            <p className="line-clamp-1">{doc.title}</p>
-          </Link>
+          <Suspense key={doc.id} fallback={<DocumentSkeleton />}>
+            <DocumentLink key={doc.id} doc={doc} />
+          </Suspense>
           )
         }
       </div>
