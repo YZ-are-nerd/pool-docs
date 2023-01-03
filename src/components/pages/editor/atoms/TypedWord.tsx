@@ -1,14 +1,19 @@
 import React from 'react'
+import { Element } from '../../../../api/types';
 import BoldWord from './BoldWord';
 import ItalicWord from './ItalicWord';
 import TaggedWord from './TaggedWord';
 type Props = {
     word: string,
     index: number,
+    elIndex: number,
     readOnly: boolean,
+    words: string[],
+    docID: string,
+    el: Element,
     setSelectedWord: React.Dispatch<React.SetStateAction<{id: number;word: string;} | null>>
 }
-const TypedWord: React.FC<Props> = ({word, index, readOnly, setSelectedWord}) => {
+const TypedWord: React.FC<Props> = ({word, index, readOnly, docID, words, el, elIndex, setSelectedWord}) => {
     if (readOnly) {
         const isTag = word.indexOf('#')
         const checkToType = word.indexOf('type:')
@@ -16,9 +21,9 @@ const TypedWord: React.FC<Props> = ({word, index, readOnly, setSelectedWord}) =>
             const cuttedWord = word.substring(5, word.length)
             const typeWord = cuttedWord.split('=')
             if (typeWord[0] === 'bold') {
-                return <BoldWord key={index} word={typeWord[1]} />
+                return <BoldWord docID={docID} el={el} originWord={word} words={words} elIndex={elIndex} index={index} key={index} word={typeWord[1]} />
             }
-            return <ItalicWord key={index} word={typeWord[1]} />
+            return <ItalicWord docID={docID} el={el} originWord={word} words={words} elIndex={elIndex} index={index} key={index} word={typeWord[1]} />
         }
         if (isTag >= 0) {
             return <TaggedWord key={index} word={word} />
@@ -31,9 +36,9 @@ const TypedWord: React.FC<Props> = ({word, index, readOnly, setSelectedWord}) =>
         const cuttedWord = word.substring(5, word.length)
         const typeWord = cuttedWord.split('=')
         if (typeWord[0] === 'bold') {
-            return <BoldWord key={index} word={typeWord[1]} />
+            return <BoldWord docID={docID} el={el} originWord={word} words={words} elIndex={elIndex} index={index} key={index} word={typeWord[1]} />
         }
-        return <ItalicWord key={index} word={typeWord[1]} />
+        return <ItalicWord docID={docID} el={el} originWord={word} words={words} elIndex={elIndex} index={index} key={index} word={typeWord[1]} />
     }
     if (isTag >= 0) {
         return <TaggedWord key={index} word={word} />

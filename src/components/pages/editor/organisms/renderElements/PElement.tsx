@@ -26,7 +26,7 @@ const PElement = (props: Props) => {
             : props.el.content.align && props.el.content.align === 'right' ? 'text-right'
             : 'text-left'
         }`}>{words.map((word, index) => {
-            return <TypedWord key={index} index={index} readOnly={true} setSelectedWord={setSelectedWord} word={word} />
+            return <TypedWord key={index} docID={props.docID} el={props.el} index={index} elIndex={props.index} readOnly={false} setSelectedWord={setSelectedWord} words={words} word={word} />
         })}</p>
     } 
     return <div onMouseEnter={() => setEditMode(true)} onMouseLeave={() => setEditMode(false)} 
@@ -43,14 +43,14 @@ const PElement = (props: Props) => {
                     <span key={index} 
                     className="relative cursor-pointer text-neutral-600 bg-neutral-100 py-0.5 px-1 rounded-lg">
                     {`${word} `}
-                        <WordToolBar docID={props.docID} el={props.el} index={index} setSelectedWord={setSelectedWord}
+                        <WordToolBar docID={props.docID} el={props.el} elIndex={props.index} index={index} setSelectedWord={setSelectedWord}
                         word={word} words={words}
                         />
                     </span>
                 )
-                return <TypedWord key={index} index={index} readOnly={false} setSelectedWord={setSelectedWord} word={word} />
+                return <TypedWord key={index} docID={props.docID} el={props.el} index={index} elIndex={props.index} readOnly={false} setSelectedWord={setSelectedWord} words={words} word={word} />
             } else {
-                return <TypedWord key={index} index={index} readOnly={false} setSelectedWord={setSelectedWord} word={word} />
+                return <TypedWord key={index} docID={props.docID} el={props.el} index={index} elIndex={props.index} readOnly={false} setSelectedWord={setSelectedWord} words={words} word={word} />
             }
         })}
         </p>

@@ -7,11 +7,12 @@ type Props = {
     word: string,
     index: number
     words: string[],
+    elIndex: number,
     el: Element,
     docID: string,
     setSelectedWord: React.Dispatch<React.SetStateAction<{id: number;word: string;} | null>>,
 }
-const WordToolBar: React.FC<Props> = ({index, word, words, docID, el, setSelectedWord}) => {
+const WordToolBar: React.FC<Props> = ({index, word, words, docID, elIndex, el, setSelectedWord}) => {
     const doc = useRecoilValue(DocAtom(docID))
     const changeWord = async(id: number, word: string, to: 'bold' | 'italic') => {
         const typedWord = `type:${to}=${word}`
@@ -24,7 +25,7 @@ const WordToolBar: React.FC<Props> = ({index, word, words, docID, el, setSelecte
                 align: el.content.align,
             }
         }
-        await documentController.updateDocData(doc, doc.data, editedElement, index)
+        await documentController.updateDocData(doc, doc.data, editedElement, elIndex)
     }
   return (
     <span className="absolute -right-1/2 -bottom-9 w-24 h-8 flex items-center gap-1 p-1 rounded-lg bg-neutral-100">
