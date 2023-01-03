@@ -7,7 +7,7 @@ import FilesDeskSkeleton from "../skeletons/FilesDesk.skeleton"
 
 const FilesPage = () => {
   return (
-    <section className="w-full h-full flex gap-2 overflow-hidden">
+    <section className="max-w-7xl mx-auto w-full h-full flex gap-2 overflow-hidden">
         <Helmet>
             <title>Файлы</title>
         </Helmet>

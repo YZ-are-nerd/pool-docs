@@ -5,14 +5,14 @@ import { DocAtom } from '../../../../store/Doc'
 import { EditMode } from '../../../../store/EditMode'
 import Blocks from '../organisms/Blocks'
 import { EditorAtom } from '../../../../store/Editor';
-import H1Element from '../atoms/renderElements/H1Element'
-import H2Element from '../atoms/renderElements/H2Element'
-import H3Element from '../atoms/renderElements/H3Element'
-import PElement from '../atoms/renderElements/PElement'
-import ListElement from '../atoms/renderElements/ListElement'
 import { Doc, Element } from '../../../../api/types'
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { supabase } from '../../../../api/client'
+import H1Element from '../organisms/renderElements/H1Element'
+import H2Element from '../organisms/renderElements/H2Element'
+import H3Element from '../organisms/renderElements/H3Element'
+import ListElement from '../organisms/renderElements/ListElement'
+import PElement from '../organisms/renderElements/PElement'
 type Props = {
   docID: string,
   onlyRead: boolean,

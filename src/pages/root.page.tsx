@@ -9,7 +9,7 @@ const RootPage = () => {
   return (
     <main className="max-w-screen min-h-screen shrink-0 flex py-2 gap-2 relative bg-neutral-200">
         {location.pathname === '/' && <img loading="lazy" className='absolute top-0 left-0 z-0 w-screen h-screen object-cover' src="/img/main_page.svg" alt="" />}
-        <SideBar/>
+        {/* <SideBar/> */}
         <section className={`${location.pathname === '/' ? 'max-w-7xl mx-auto' : ''} z-10 w-full h-full flex flex-col gap-2`}>
           <NavBar />
           {

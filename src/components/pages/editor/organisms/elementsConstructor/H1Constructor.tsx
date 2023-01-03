@@ -9,7 +9,7 @@ import { Constructor } from '../../../../../store/Constructor';
 import { DocAtom } from '../../../../../store/Doc';
 import { EditMode } from '../../../../../store/EditMode';
 import { EditorAtom } from '../../../../../store/Editor';
-import TextArea from '../TextArea';
+import TextArea from '../../atoms/TextArea';
 
 const H1Constructor = () => {
     const params = useParams()

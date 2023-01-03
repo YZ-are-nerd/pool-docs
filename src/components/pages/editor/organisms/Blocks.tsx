@@ -4,11 +4,11 @@ import { useClickAway } from "react-use"
 import { useSetRecoilState } from "recoil"
 import { Constructor } from "../../../../store/Constructor"
 import { EditMode } from "../../../../store/EditMode"
-import H1Constructor from "../atoms/elementsConstructor/H1Constructor"
-import H2Constructor from "../atoms/elementsConstructor/H2Constructor"
-import H3Constructor from "../atoms/elementsConstructor/H3Constructor"
-import ListConstructor from "../atoms/elementsConstructor/ListConstructor"
-import PConstructor from "../atoms/elementsConstructor/PConstructor"
+import H1Constructor from "./elementsConstructor/H1Constructor"
+import H2Constructor from "./elementsConstructor/H2Constructor"
+import H3Constructor from "./elementsConstructor/H3Constructor"
+import ListConstructor from "./elementsConstructor/ListConstructor"
+import PConstructor from "./elementsConstructor/PConstructor"
 
 const Blocks = () => {
     const setEditMode = useSetRecoilState(EditMode('editor'))
