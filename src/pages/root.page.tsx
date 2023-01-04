@@ -1,23 +1,21 @@
 import { useEffect } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { useRecoilValue } from "recoil"
 import NavBar from "../components/global/navbar/template/NavBar"
-import SideBar from "../components/global/sideBar/template/SideBar"
-import HomePage from "./home.page"
+import { User } from "../store/User"
 
 const RootPage = () => {
+  const user = useRecoilValue(User)
   const location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!user && location.pathname !== '/files') navigate('/files')
+    if (location.pathname === '/') navigate('/files')
+  },[user])
   return (
-    <main className="max-w-screen min-h-screen shrink-0 flex py-2 gap-2 relative bg-neutral-200">
-        {location.pathname === '/' && <img loading="lazy" className='absolute top-0 left-0 z-0 w-screen h-screen object-cover' src="/img/main_page.svg" alt="" />}
-        {/* <SideBar/> */}
-        <section className={`${location.pathname === '/' ? 'max-w-7xl mx-auto' : ''} z-10 w-full h-full flex flex-col gap-2`}>
+    <main className="max-w-screen min-h-screen shrink-0 flex flex-col py-2 gap-2 relative bg-neutral-200">
           <NavBar />
-          {
-            location.pathname === '/'
-            ? <HomePage/>
-            : <Outlet />
-          }
-        </section>
+          <Outlet />
     </main>
   )
 }

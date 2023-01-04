@@ -26,7 +26,7 @@ const PElement = (props: Props) => {
             : props.el.content.align && props.el.content.align === 'right' ? 'text-right'
             : 'text-left'
         }`}>{words.map((word, index) => {
-            return <TypedWord key={index} docID={props.docID} el={props.el} index={index} elIndex={props.index} readOnly={false} setSelectedWord={setSelectedWord} words={words} word={word} />
+            return <TypedWord key={index} docID={props.docID} el={props.el} index={index} elIndex={props.index} readOnly={true} setSelectedWord={setSelectedWord} words={words} word={word} />
         })}</p>
     } 
     return <div onMouseEnter={() => setEditMode(true)} onMouseLeave={() => setEditMode(false)} 

@@ -11,13 +11,13 @@ export type Nav = {
 }
 const NavBar = () => {
   const navs: Nav[] = [
-    {
-      id: 1, 
-      title: "Главная", 
-      link: '/',
-      iconInActive: <BiHome className="text-neutral-400" size={20} />, 
-      iconActive: <BiHome className="text-blue-500" size={20} />
-    },
+    // {
+    //   id: 1, 
+    //   title: "Главная", 
+    //   link: '/',
+    //   iconInActive: <BiHome className="text-neutral-400" size={20} />, 
+    //   iconActive: <BiHome className="text-blue-500" size={20} />
+    // },
     {
       id: 2, 
       title: "Файлы", 
@@ -28,7 +28,7 @@ const NavBar = () => {
   ]
   const [selectedPage, setSelectedPage] = useState<Nav>(navs[0])
   return (
-    <div className="max-w-7xl w-full mx-auto h-10 flex items-center justify-between">
+    <div className="max-w-7xl w-full mx-auto h-10 px-2 lg:px-0 flex items-center justify-between">
       <div className="w-fit h-full flex items-center gap-2">
         {
           navs.map((nav, index) =>

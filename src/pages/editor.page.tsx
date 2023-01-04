@@ -20,7 +20,7 @@ const EditorPage = () => {
         setEditMode(false)
     }
     return (
-    <div className='w-full h-full relative flex flex-col items-center justify-center'>
+    <div className='w-full h-full relative flex flex-col p-2 items-center justify-center'>
         <Helmet>
             <title>{doc.title}</title>
         </Helmet>
@@ -30,7 +30,7 @@ const EditorPage = () => {
                     !editMode
                     ?
                     <div className="w-fit h-fit flex items-center gap-2">
-                        <h1>{doc.title}</h1>
+                        <h1 className="line-clamp-1">{doc.title}</h1>
                         <button onClick={() => setEditMode(true)} className="p-1 rounded-lg mt-1 bg-neutral-100"><BiPencil/></button>
                     </div>
                     :

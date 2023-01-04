@@ -48,7 +48,7 @@ const Editor: React.FC<Props> = ({docID, onlyRead}) => {
     },[])
   return (
 
-      <div ref={wrapperRef} className="max-w-3xl p-3 h-[1000px] w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
+      <div ref={wrapperRef} className="max-w-3xl p-3 min-h-screen max-h-fit w-full rounded-xl flex flex-col gap-1 shadow-lg bg-white">
         {
           editor.map((val, index) => {
             if (val.type === 'h1') return <H1Element onlyRead={onlyRead} docID={docID} index={index} key={val.content.text && val.content.text + index} el={val} />
