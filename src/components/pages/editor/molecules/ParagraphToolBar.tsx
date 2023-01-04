@@ -33,9 +33,9 @@ const ParagraphToolBar: React.FC<Props> = ({index, docID, el}) => {
     }
   return (
     <section className="w-full h-8 rounded-xl flex items-center gap-1">
-        <div className="h-full w-8 rounded-lg flex items-center justify-center bg-neutral-100">
+        {/* <div className="h-full w-8 rounded-lg flex items-center justify-center bg-neutral-100">
             <BiEdit/>
-        </div>
+        </div> */}
         <div onClick={getElementFromEditor} className="h-full w-8 rounded-lg flex items-center justify-center bg-neutral-100">
             <BiTrash/>
         </div>
