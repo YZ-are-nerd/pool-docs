@@ -7,7 +7,6 @@ export const SelectedWord = atomFamily({
     default: selectorFamily({
         key: 'seletedWord',
         get: (word: string) => () => {
-            console.log(word);
             return word
         }
     })

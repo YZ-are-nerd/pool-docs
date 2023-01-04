@@ -38,7 +38,6 @@ const Editor: React.FC<Props> = ({docID, onlyRead}) => {
         .channel(`public:documents:id=eq.${doc.id}`)
         .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'documents', filter: `id=eq.${doc.id}` }, payload => {
             if (payload.new) {
-              console.log('Обновление', payload);
               const newDoc = payload.new as Doc 
               setDoc(newDoc)
               setEditor(newDoc.data)

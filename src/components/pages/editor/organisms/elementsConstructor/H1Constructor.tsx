@@ -25,7 +25,6 @@ const H1Constructor = () => {
     }
     useClickAway(wrapperRef, () => {
       if (value.length > 0) {
-        console.log('Можно создавать блок');
         const h1Block: Element = {
           type: 'h1',
           content: {
@@ -39,7 +38,6 @@ const H1Constructor = () => {
         setEditMode(false)
         setValue('')
       }
-      console.log('OUTSIDE CLICKED');
     });
     return (
       <div ref={wrapperRef} className='w-full h-fit flex flex-col'>

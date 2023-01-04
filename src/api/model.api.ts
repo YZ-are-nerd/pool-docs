@@ -8,11 +8,9 @@ export const modelAPI = (() => {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
             })
-            console.log(error);
         },
         signOut: async() => {
             const { error } = await supabase.auth.signOut()
-            console.log(error);
         },
         getUserByID: async(id: string) => {
             const { data, error } = await supabase
@@ -25,7 +23,6 @@ export const modelAPI = (() => {
             return null
         },
         checkUserExistsByID: async(uid: string) => {
-            console.log(uid);
             const { data, error } = await supabase
             .from('users')
             .select("*")

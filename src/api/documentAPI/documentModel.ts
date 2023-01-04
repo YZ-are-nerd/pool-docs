@@ -15,7 +15,6 @@ export const documentModel = (() => {
             .select()
             .limit(1)
             .single()
-            console.log(error);
             return data as Doc
         },
         getDocByDocID: async(docID: string) => {
@@ -44,7 +43,6 @@ export const documentModel = (() => {
                 updated_at: DateTime.now().toISO()
             } as Doc)
             .eq('id', doc.id)
-            console.log(error);
         },
         updateDocData: async(doc: Doc, editorData: Element[], editedElement: Element, indexOfEditedElement: number) => {
             const editedData = editorData.map((data, index) => {
@@ -58,7 +56,6 @@ export const documentModel = (() => {
                 updated_at: DateTime.now().toISO()
             } as Doc)
             .eq('id', doc.id)
-            console.log(error);
         },
         updateDocTitle: async(doc: Doc, title: string) => {
             const { error } = await supabase
@@ -68,7 +65,12 @@ export const documentModel = (() => {
                 updated_at: DateTime.now().toISO()
             })
             .eq('id', doc.id)
-            console.log(error);
+        },
+        deleteDoc: async(doc: Doc) => {
+            const { error } = await supabase
+            .from('documents')
+            .delete()
+            .eq('id', doc.id)
         }
     }
 })()

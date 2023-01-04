@@ -23,6 +23,9 @@ export const documentController = (() => {
         },
         updateDocTitle: async(doc: Doc, title: string) => {
             await documentModel.updateDocTitle(doc, title)
+        },
+        deleteDoc: async(doc: Doc) => {
+            await documentModel.deleteDoc(doc)
         }
     }
 })()

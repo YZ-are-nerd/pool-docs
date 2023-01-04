@@ -18,7 +18,6 @@ type Props = {
 const BlockButton: React.FC<Props> = ({format, icon, title}) => {
     const editor = useSlate()
     const toggleBlock = (editor: BaseEditor, format: string) => {
-        console.log(editor, format);
         Transforms.setNodes(
             editor as BaseEditor & ReactEditor,
             { type: format },

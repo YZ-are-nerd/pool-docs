@@ -10,7 +10,6 @@ const NewDocumentButton = () => {
     const addNewDoc = async() => {
         if (user) {
             const createdDoc = await documentController.createDocument(user.id)
-            console.log(createdDoc);
             navigate(`/file/${createdDoc.id}`)
         }
     }
